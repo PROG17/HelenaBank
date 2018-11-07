@@ -13,8 +13,11 @@ namespace HelenaBank.Repo
         
         public List<Customer> ImportCustomers()
         {
+            var path = Path.GetFullPath("bankdata-small.txt");
+            path = path.Replace("bankdata-small.txt", "Files\\bankdata-small.txt");
+
             List<Customer> listOfCustomers = new List<Customer>();
-            var reader = new StreamReader(@"D:\Helena\Documents\Prog17\ALM\HelenaBank\HelenaBank\Files\bankdata-small.txt");
+            var reader = new StreamReader(path);
 
             int Customers = int.Parse(reader.ReadLine());
 
