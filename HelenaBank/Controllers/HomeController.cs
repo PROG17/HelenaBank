@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HelenaBank.Models;
+using HelenaBank.Repo;
 
 namespace HelenaBank.Controllers
 {
@@ -12,7 +13,9 @@ namespace HelenaBank.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var repo = new BankRepository();
+            var customers = repo.ImportCustomers();
+            return View(customers);
         }
 
         public IActionResult About()
