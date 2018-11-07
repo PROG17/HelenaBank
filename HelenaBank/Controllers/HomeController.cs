@@ -11,10 +11,15 @@ namespace HelenaBank.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IBankRepository _repo;
+
+        public HomeController(IBankRepository repo)
         {
-            var repo = new BankRepository();
-            var customers = repo.ImportCustomers();
+            _repo = repo;
+        }
+        public IActionResult Index()
+        {           
+            var customers = _repo.ImportCustomers();
             return View(customers);
         }
 

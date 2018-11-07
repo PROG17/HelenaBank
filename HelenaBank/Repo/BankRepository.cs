@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelenaBank.Repo
 {
-    public class BankRepository
+    public class BankRepository : IBankRepository
     {
         
         public List<Customer> ImportCustomers()
