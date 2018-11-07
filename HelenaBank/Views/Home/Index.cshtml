@@ -1,8 +1,33 @@
-﻿@{
+﻿@model List<HelenaBank.Models.Customer>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div class="row">
+
+    <h2>Kunder</h2>
+    @foreach (var customer in Model)
+    {
+        <h4>Kund</h4>
+        <div class="customer">
+            <p>Kundnummer: @customer.Id</p>
+            <p>Kund: @customer.Name</p>
+
+            <h4>Konton</h4>
+            @foreach (var account in customer.Accounts)
+            {
+
+                <div>
+                    <p>@account.AccountNo har saldot @account.Balance</p>
+                </div>
+            }
+
+        </div>
+        <hr>
+    }
+</div>
+
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -91,4 +116,4 @@
             <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
         </ul>
     </div>
-</div>
+</div>*@

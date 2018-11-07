@@ -5,14 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HelenaBank.Models;
+using HelenaBank.Repo;
 
 namespace HelenaBank.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IBankRepository _repo;
+
+        public HomeController(IBankRepository repo)
         {
-            return View();
+            _repo = repo;
+        }
+        public IActionResult Index()
+        {           
+            var customers = _repo.ImportCustomers();
+            return View(customers);
         }
 
         public IActionResult About()
